@@ -6,17 +6,17 @@
 #
 # Usage:
 #
-#     > hashColor.light("foo");
+#     > hashcolor.light("foo");
 #     '#fbeaea'
-#     > hashColor.dark("foo");
+#     > hashcolor.dark("foo");
 #     '#3a2826'
-#     > hashColor.val("foo");
+#     > hashcolor.val("foo");
 #     7688524
-#     > hashColor.intToColor(0xF00BA8)
+#     > hashcolor.intToColor(0xF00BA8)
 #     "#F00BA8" 
-#     > hashColor.strHash "foo"
+#     > hashcolor.strHash "foo"
 #     160415585
-#     > hashColor.prng 123
+#     > hashcolor.prng 123
 #     1218640798
 #
 #
@@ -32,10 +32,10 @@ if typeof isNodeJs == "undefined" or typeof runTest == "undefined" then do ->
   root.runTest = isNodeJs and process.argv[2] == "test" if typeof runTest == "undefined"
 
 #{{{2 Actual implementation
-hashColor = {}
+hashcolor = {}
 
 # hashing based on djb
-hashColor.strHash = (s) ->
+hashcolor.strHash = (s) ->
   hash = 5381
   i = s.length
   while i
@@ -43,21 +43,21 @@ hashColor.strHash = (s) ->
   hash
 
 # pseudorandom number, to make sure hash value uses at least 24 bit, even for single character strings
-hashColor.prng = (n) -> (1664525 * n + 1013904223) |0
+hashcolor.prng = (n) -> (1664525 * n + 1013904223) |0
 
 # convert integer to hexcolor
-hashColor.intToColor = (i) -> "#" + ((i & 0xffffff) + 0x1000000).toString(16).slice(1)
+hashcolor.intToColor = (i) -> "#" + ((i & 0xffffff) + 0x1000000).toString(16).slice(1)
 
 # return an integer color base on hash
-hashColor.val = (str) -> hashColor.prng hashColor.strHash str
+hashcolor.val = (str) -> hashcolor.prng hashcolor.strHash str
 
 # Light and dark version of the color, ready to use in css
-hashColor.light = (str) -> hashColor.intToColor ((hashColor.val str) >> 4) | 0xe0e0e0
-hashColor.dark = (str) -> hashColor.intToColor (hashColor.val str) & 0x7f7f7f
+hashcolor.light = (str) -> hashcolor.intToColor ((hashcolor.val str) >> 4) | 0xe0e0e0
+hashcolor.dark = (str) -> hashcolor.intToColor (hashcolor.val str) & 0x7f7f7f
 
 #{{{2 export
 if isNodeJs
-  module.exports = hashColor
+  module.exports = hashcolor
 else
-  window.hashColor = hashColor
+  window.hashcolor = hashcolor
 
