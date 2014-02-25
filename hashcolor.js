@@ -36,15 +36,15 @@
   };
 
   hashColor.val = function(str) {
-    return 0xffffff & hashColor.prng(hashColor.strHash(str));
+    return hashColor.prng(hashColor.strHash(str));
   };
 
   hashColor.light = function(str) {
-    return hashColor.intToColor(((hashColor.val(str)) >> 5) | 0xe0e0e0);
+    return hashColor.intToColor(((hashColor.val(str)) >> 4) | 0xe0e0e0);
   };
 
   hashColor.dark = function(str) {
-    return hashColor.intToColor(((hashColor.val(str)) >> 1) & 0x7f7f7f);
+    return hashColor.intToColor((hashColor.val(str)) & 0x7f7f7f);
   };
 
   if (isNodeJs) {

@@ -49,11 +49,11 @@ hashColor.prng = (n) -> (1664525 * n + 1013904223) |0
 hashColor.intToColor = (i) -> "#" + ((i & 0xffffff) + 0x1000000).toString(16).slice(1)
 
 # return an integer color base on hash
-hashColor.val = (str) -> 0xffffff & hashColor.prng hashColor.strHash str
+hashColor.val = (str) -> hashColor.prng hashColor.strHash str
 
 # Light and dark version of the color, ready to use in css
-hashColor.light = (str) -> hashColor.intToColor ((hashColor.val str) >> 5) | 0xe0e0e0
-hashColor.dark = (str) -> hashColor.intToColor ((hashColor.val str) >> 1) & 0x7f7f7f
+hashColor.light = (str) -> hashColor.intToColor ((hashColor.val str) >> 4) | 0xe0e0e0
+hashColor.dark = (str) -> hashColor.intToColor (hashColor.val str) & 0x7f7f7f
 
 #{{{2 export
 if isNodeJs

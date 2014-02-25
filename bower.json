@@ -1,6 +1,6 @@
 {
   "name": "hashcolor",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Microlibrary to get a color given a string",
   "authors": "Rasmus Erik Voel Jensen (solsort.com)",
   "main": "hashcolor.min.js",

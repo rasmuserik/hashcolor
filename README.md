@@ -1,4 +1,4 @@
-# hashcolor 0.0.1
+# hashcolor 0.0.2
 
 Microlibrary to get a color given a string
 [![ci](https://secure.travis-ci.org/rasmuserik/hashcolor.png)](http://travis-ci.org/rasmuserik/hashcolor)
@@ -66,13 +66,13 @@ convert integer to hexcolor
 
 return an integer color base on hash
 
-    hashColor.val = (str) -> 0xffffff & hashColor.prng hashColor.strHash str
+    hashColor.val = (str) -> hashColor.prng hashColor.strHash str
     
 
 Light and dark version of the color, ready to use in css
 
-    hashColor.light = (str) -> hashColor.intToColor ((hashColor.val str) >> 5) | 0xe0e0e0
-    hashColor.dark = (str) -> hashColor.intToColor ((hashColor.val str) >> 1) & 0x7f7f7f
+    hashColor.light = (str) -> hashColor.intToColor ((hashColor.val str) >> 4) | 0xe0e0e0
+    hashColor.dark = (str) -> hashColor.intToColor (hashColor.val str) & 0x7f7f7f
     
 
 ## export
