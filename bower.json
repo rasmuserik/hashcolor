@@ -1,0 +1,11 @@
+{
+  "name": "hashcolor",
+  "version": "0.0.1",
+  "description": "Microlibrary to get a color given a string",
+  "authors": "Rasmus Erik Voel Jensen (solsort.com)",
+  "main": "hashcolor.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rasmuserik/hashcolor.git"
+  }
+}
