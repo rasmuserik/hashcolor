@@ -13,16 +13,17 @@ Install
 Usage:
 
     > hashColor.light("foo");
-    "#....."
+    '#fbeaea'
     > hashColor.dark("foo");
-    "#....."
+    '#3a2826'
     > hashColor.val("foo");
-    123
+    7688524
     > hashColor.intToColor(0xF00BA8)
-    "#F00BA8"
+    "#F00BA8" 
     > hashColor.strHash "foo"
-    
+    160415585
     > hashColor.prng 123
+    1218640798
 
 
 # Literate source code
@@ -65,21 +66,21 @@ convert integer to hexcolor
 
 return an integer color base on hash
 
-    hashColor.val = (str) -> hashColor.prng hashColor.strHash str
+    hashColor.val = (str) -> 0xffffff & hashColor.prng hashColor.strHash str
     
 
 Light and dark version of the color, ready to use in css
 
-    hashColor.light = (str) -> hashColor.intToColor ((hashColor str) >> 5) | 0xe0e0e0
-    hashColor.dark = (str) -> hashColor.intToColor ((hashColor str) >> 1) & 0x7f7f7f
+    hashColor.light = (str) -> hashColor.intToColor ((hashColor.val str) >> 5) | 0xe0e0e0
+    hashColor.dark = (str) -> hashColor.intToColor ((hashColor.val str) >> 1) & 0x7f7f7f
     
 
 ## export
 
     if isNodeJs
-      module.exports = jsonml2html
+      module.exports = hashColor
     else
-      window.jsonml2html = jsonml2html
+      window.hashColor = hashColor
     
     
 
